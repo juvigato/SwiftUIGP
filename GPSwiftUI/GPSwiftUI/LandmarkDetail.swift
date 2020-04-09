@@ -9,18 +9,21 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
+    
+    var landmark: Dados
+    
     var body: some View {
         VStack {
             MapView()
                 .edgesIgnoringSafeArea(.top)
                 .frame(height: 300)
             
-            CircleImage()
+            CircleImage(image: landmark.image)
                 .offset(y: -130)
                 .padding(.bottom, -130)
             
             VStack(alignment:.leading) {
-                Text("Empire State Building")
+                Text(landmark.nome)
                     .font(.title)
                     .foregroundColor(Color.pink)
                 HStack {
@@ -39,7 +42,7 @@ struct LandmarkDetail: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkDetail()
+        LandmarkDetail(landmark:Dados.init(nome: "Empire", image: "empire"))
 //            .previewLayout(.fixed(width:70, height:300))
     }
 }

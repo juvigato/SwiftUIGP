@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct LandmarkRow: View {
-//    var landmark: Landmark
     var name: String
     var imagem: String
     var cor = #colorLiteral(red: 1, green: 0.8450692296, blue: 0.8919255137, alpha: 1)
@@ -24,6 +23,7 @@ struct LandmarkRow: View {
                 .scaledToFit()
             Text(name)
             Spacer()
+
         }
     }
 }

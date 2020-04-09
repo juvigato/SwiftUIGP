@@ -9,39 +9,39 @@
 import SwiftUI
 
 struct Dados {
-    var nome: String
-    var image: String
+    let nome: String
+    let image: String
 }
 
 struct LandmarkList: View {
-    var dados: [Dados] = []
-//    for i in 0...<4 {
-//        print("lala")
-//    }
-    var nomes: [String] = ["Hello", "Zewu", "Ju", "Xuxu"]
-    var nomesImg: [String] = ["empire", "pocoio", "corgi", "yellow"]
+    var familiaMembros = [
+        Dados(nome: "Empire State Building", image: "empire"),
+        Dados(nome: "Zewu", image: "pocoio"),
+        Dados(nome: "Ju", image: "corgi"),
+        Dados(nome: "Xuxu", image: "yellow")
+    ]
     
     var body: some View {
-//        List {
-//            LandmarkRow(landmark: landmarkData[0])
-//            LandmarkRow(landmark: landmarkData[1])
-//        }
-//        List(landmarkData, id: \.id) { landmark in
-//            LandmarkRow(landmark: landmark)
-//        }
+
         NavigationView {
-            List(nomes, id: \.description) { landmark in
-                NavigationLink(destination: LandmarkDetail()) {
-                    LandmarkRow(name: landmark, imagem: landmark)
+            List(familiaMembros, id: \.nome) { landmark in
+                NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
+                    LandmarkRow(name: landmark.nome, imagem: landmark.image)
                 }
             }
-            .navigationBarTitle(Text("Landmarks"))
+            .navigationBarTitle(Text("Família"))
         }
     }
 }
 
 struct LandmarkList_Previews: PreviewProvider {
     static var previews: some View {
+//        ForEach(["iPhone SE", "iPhone X"], id: \.self) { deviceName in
+//            LandmarkList()
+//            .previewDevice(PreviewDevice(rawValue: deviceName))
+//            .previewDisplayName(deviceName)
+//
+//        }
         LandmarkList()
     }
 }
